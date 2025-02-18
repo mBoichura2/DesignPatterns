@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,9 @@ namespace Lab1
         public DateTime Date { get; set; }
         public List<Sensor> Data { get; set; }
 
-        public void Generate()
+        public void Generate(JournalSP journal)
         {
-            Console.WriteLine($"Generating report for {Date}");
-
-            Console.WriteLine($"{Data[0].Name}: {Data[0].GetReading()}");
-            Console.WriteLine($"{Data[1].Name}: {Data[1].GetReading()}");
-            Console.WriteLine($"{Data[2].Name}: {Data[2].GetReading()}");
+            journal.AddParams(Date.ToString(), Data[0].GetReading(), Data[1].GetReading(), Data[2].GetReading());
         }
     }
 }

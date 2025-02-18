@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesignPatterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,10 @@ namespace Lab1
             Console.WriteLine($"Sensor {sensor.Name} removed.");
         }
 
-        public void GenerateReport()
+        public void GenerateReport(JournalSP journal)
         {
             var report = new Report { Date = DateTime.Now, Data = new List<Sensor>(Sensors) };
-            report.Generate();
+            report.Generate(journal);
         }
 
         public void SendAlert(string message)
