@@ -1,4 +1,5 @@
-﻿using Lab1;
+﻿using DesignPatterns;
+using Lab1;
 using System;
 using System.Collections.Generic;
 
@@ -16,14 +17,31 @@ class Program
         system.AddSensor(tempSensor);
         system.AddSensor(phSensor);
         system.AddSensor(turbiditySensor);
-
-        system.GenerateReport();
-        system.SendAlert("High turbidity detected!");
+        Console.WriteLine();
 
         User admin = new AdminUser { Name = "Admin1" };
         User user = new RegularUser { Name = "User1" };
 
         admin.Login();
         user.Login();
+        Console.WriteLine();
+
+        JournalSP journal = JournalSP.GetInstance();
+        for (int i = 0; i < 10; i++)
+        {
+            system.GenerateReport(journal);
+        }
+
+        journal.PrintParams();
+
+
+
+        JournalSP journal2 = JournalSP.GetInstance();
+        for (int i = 0; i < 10; i++)
+        {
+            system.GenerateReport(journal2);
+        }
+
+        journal2.PrintParams();
     }
 }
