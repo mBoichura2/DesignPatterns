@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab1
+namespace DesignPatterns
 {
     // Головний клас системи
     public class WaterQualitySystem
@@ -25,7 +25,7 @@ namespace Lab1
             Console.WriteLine($"Sensor {sensor.Name} removed.");
         }
 
-        public void GenerateReport(JournalSP journal)
+        public void GenerateReport(JournalSPMP journal)
         {
             var report = new Report { Date = DateTime.Now, Data = new List<Sensor>(Sensors) };
             report.Generate(journal);

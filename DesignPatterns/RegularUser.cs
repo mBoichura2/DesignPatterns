@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab1
+namespace DesignPatterns
 {
     // Звичайний користувач
     public class RegularUser : User

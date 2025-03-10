@@ -1,10 +1,10 @@
 ﻿using DesignPatterns;
-using Lab1;
+using DesignPatterns;
 using System;
 using System.Collections.Generic;
 
 // Головна функція для тестування
-class Program
+partial class Program
 {
     static void Main()
     {
@@ -19,29 +19,21 @@ class Program
         system.AddSensor(turbiditySensor);
         Console.WriteLine();
 
-        User admin = new AdminUser { Name = "Admin1" };
         User user = new RegularUser { Name = "User1" };
 
-        admin.Login();
-        user.Login();
-        Console.WriteLine();
+        JournalSPMP journal = JournalSPMP.GetInstance();
+        Caretaker history = new Caretaker();
 
-        JournalSP journal = JournalSP.GetInstance();
-        for (int i = 0; i < 10; i++)
-        {
-            system.GenerateReport(journal);
-        }
+
+        QualityCheckFP qualityCheckFP = new QualityCheckFP();
+        qualityCheckFP.Check(user, system);
+
+        history.Memento = journal.SaveState();
+
+        qualityCheckFP.Check(user, system);
+
+        journal.RestoreState(history.Memento);
 
         journal.PrintParams();
-
-
-
-        JournalSP journal2 = JournalSP.GetInstance();
-        for (int i = 0; i < 10; i++)
-        {
-            system.GenerateReport(journal2);
-        }
-
-        journal2.PrintParams();
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab1
+namespace DesignPatterns
 {
     // Конкретні сенсори
     public class TemperatureSensor : Sensor
